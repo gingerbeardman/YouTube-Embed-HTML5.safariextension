@@ -13,11 +13,13 @@ if (window.top === window) {
 
 		//replace with embed
 		if (video_id && document.getElementById('movie_player').classList.contains('endscreen-created') === false) {
-			var video = document.getElementById('watch7-player');
+			var video = document.getElementById('movie_player');
 			var vW = video.offsetWidth;
 			var vH = video.offsetHeight;
 			
-			document.getElementById('watch7-video').innerHTML = '<iframe width="'+vW+'" height="'+vH+'" src="http://www.youtube.com/embed/'+ video_id +'" frameborder="0" allowfullscreen></iframe>';
+			document.getElementById('movie_player').innerHTML = '<iframe width="'+vW+'" height="'+vH+'" src="http://www.youtube.com/embed/'+ video_id +'" frameborder="0" allowfullscreen></iframe>';
+		} else {
+			console.log("not found: .endscreen-created");
 		}
 	}
 	
@@ -31,14 +33,18 @@ if (window.top === window) {
 	//check for no video
 	var timerVideo = setInterval(function() {
 		if (document.getElementById('movie_player')) {
-		 replaceVideo();
-		 clearInterval(timerVideo);
+			console.log("found: #movie_player");
+			replaceVideo();	
+			clearInterval(timerVideo);
+		} else {
+			console.log("not yet found: #movie_player");
 		}
 	}, 1000);
 
 	//check for warning
 	var timerWarning = setInterval(function() {
 		if (document.getElementById('flash-upgrade')) {
+			console.log("not found: #flash-upgrade");
 			removeWarning();
 			clearInterval(timerWarning);
 		}
