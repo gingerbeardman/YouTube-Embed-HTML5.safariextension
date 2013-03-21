@@ -1,15 +1,46 @@
 if (window.top === window) {
-	function init() {
-		var video_id = window.location.search.split('v=')[1];
-		var ampersandPosition = video_id.indexOf('&');
-		if(ampersandPosition != -1) {
+	function replaceVideo() {
+		//remove flash warning
+		var video_id, ampersandPosition;
+
+		video_id = window.location.search.split('v=')[1];
+		if (video_id) ampersandPosition = video_id.indexOf('&');
+		if (video_id && ampersandPosition != -1) {
 			video_id = video_id.substring(0, ampersandPosition);
 		}
+		if (video_id == '')
+			return;
 
-		if (document.getElementById('movie_player-html5').classList.contains('endscreen-created') === false) {
-			document.getElementById('watch7-video').innerHTML = '<iframe width="640" height="390" src="http://www.youtube.com/embed/'+ video_id +'" frameborder="0" allowfullscreen></iframe>';
+		//replace with embed
+		if (video_id && document.getElementById('movie_player').classList.contains('endscreen-created') === false) {
+			var video = document.getElementById('watch7-player');
+			var vW = video.offsetWidth;
+			var vH = video.offsetHeight;
+			
+			document.getElementById('watch7-video').innerHTML = '<iframe width="'+vW+'" height="'+vH+'" src="http://www.youtube.com/embed/'+ video_id +'" frameborder="0" allowfullscreen></iframe>';
+		}
+	}
+	
+	function removeWarning() {
+		var element =  document.getElementById('flash-upgrade');
+		if (typeof(element) != 'undefined' && element != null) {
+			document.getElementById('flash-upgrade').innerHTML = '';
 		}
 	}
 
-	setTimeout(init, 2500);
+	//check for no video
+	var timerVideo = setInterval(function() {
+		if (document.getElementById('movie_player')) {
+		 replaceVideo();
+		 clearInterval(timerVideo);
+		}
+	}, 1000);
+
+	//check for warning
+	var timerWarning = setInterval(function() {
+		if (document.getElementById('flash-upgrade')) {
+			removeWarning();
+			clearInterval(timerWarning);
+		}
+	}, 10);
 }
