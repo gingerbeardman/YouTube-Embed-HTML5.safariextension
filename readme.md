@@ -6,6 +6,9 @@ Use an embedded player for videos that fail to start using the HTML5 player.
 ## Why?
 The YouTube "HTML5 trial" player seems to have issues with some videos, resulting in a warning that you need to install Adobe Flash.
 
+##Download
+[YouTube-Embed-HTML5.safariextz](http://www.gingerbeardman.com/safari/YouTube-Embed-HTML5.safariextz)
+
 ## Known issues
 The embedded HTML5 player has fewer controls and options.
 

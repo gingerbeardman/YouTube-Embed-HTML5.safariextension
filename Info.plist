@@ -5,7 +5,7 @@
 	<key>Author</key>
 	<string>Matt Sephton</string>
 	<key>Builder Version</key>
-	<string>8536.28.10</string>
+	<string>8536.29.13</string>
 	<key>CFBundleDisplayName</key>
 	<string>YouTube Embed HTML5</string>
 	<key>CFBundleIdentifier</key>
@@ -13,9 +13,9 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.14</string>
+	<string>1.16</string>
 	<key>CFBundleVersion</key>
-	<string>1.14</string>
+	<string>1.16</string>
 	<key>Chrome</key>
 	<dict/>
 	<key>Content</key>
